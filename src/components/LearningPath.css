@@ -1,0 +1,32 @@
+.learning-path {
+  position: relative;
+}
+
+.step {
+  position: relative;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ccc;
+  z-index: -1;
+}
+
+.step.center::before {
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  top: 0;
+}
+
+.step.between::before {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+}
