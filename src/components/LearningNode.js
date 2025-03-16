@@ -21,8 +21,12 @@ const LearningNode = ({
 
   return (
     <>
+      {/* Prevent default scrolling when clicking the button */}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={(e) => {
+          e.preventDefault(); // Prevents any unintended scrolling
+          setIsOpen(true);
+        }}
         className="bg-gray-800 text-white px-6 py-3 rounded-lg text-center shadow-md max-w-xs hover:scale-105 transition-transform m-2"
       >
         {text}
@@ -37,12 +41,7 @@ const LearningNode = ({
             >
               &times;
             </button>
-            <button
-              onClick={() => setIsOpen(true)}
-              className="bg-gray-800 text-white px-6 py-3 rounded-lg text-center shadow-md max-w-xs hover:bg-gray-700 hover:scale-105 transition-transform m-2"
-            >
-              {text}
-            </button>
+
             <button
               onClick={handleFavoriteClick}
               className="absolute top-2 left-3 text-yellow-400 hover:text-yellow-500"
