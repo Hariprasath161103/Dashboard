@@ -8,11 +8,11 @@ function App() {
 
   return (
     <div className="flex h-screen bg-[#1a1a1a] text-white">
-      {/* Sidebar - Hidden on Mobile, Always Visible on Desktop */}
+      {/* Sidebar - Hidden on Mobile, Shows when Opened */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-gray-900 transform transition-transform ease-in-out duration-300 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-gray-900 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:relative md:translate-x-0`}
+        } transition-transform md:relative md:translate-x-0`}
       >
         <Sidebar />
       </div>
@@ -26,16 +26,14 @@ function App() {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 p-4 md:p-8 relative">
+      <div className="flex-1 p-4 md:p-8">
         {/* Mobile Menu Button */}
-        {!isSidebarOpen && (
-          <button
-            className="absolute top-4 left-4 text-white p-2 bg-gray-800 rounded-md md:hidden"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <Menu size={24} />
-          </button>
-        )}
+        <button
+          className="absolute top-4 left-4 text-white p-2 bg-gray-800 rounded-md md:hidden"
+          onClick={() => setIsSidebarOpen(true)}
+        >
+          <Menu size={24} />
+        </button>
 
         <LearningPath />
       </div>
@@ -43,4 +41,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
