@@ -12,9 +12,14 @@ const SettingsModal = ({ onClose }) => {
     ];
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 p-4">
-            <div className="bg-gray-800 text-white w-full max-w-lg md:max-w-2xl lg:max-w-3xl h-auto max-h-[90%] rounded-lg shadow-xl overflow-hidden relative">
-                
+        <div 
+            className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 p-4"
+            onClick={onClose} // Close modal when clicking outside
+        >
+            <div 
+                className="bg-gray-800 text-white w-full max-w-lg md:max-w-2xl lg:max-w-3xl h-auto max-h-[90%] rounded-lg shadow-xl overflow-hidden relative"
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            >
                 {/* Animate Between Sidebar and Content */}
                 <AnimatePresence mode="wait">
                     {!selectedCategory ? (
