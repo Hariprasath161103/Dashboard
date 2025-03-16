@@ -12,7 +12,7 @@ const Navigation = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const searchRef = useRef(null);
 
-  // Function to close search bar when clicking outside
+  // Close search bar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -33,8 +33,8 @@ const Navigation = () => {
 
   return (
     <div className="p-2 relative">
-      {/* Responsive Navigation Bar */}
-      <div className="flex justify-around bg-gray-900 text-white py-3 px-4 rounded-lg shadow-md md:justify-center md:gap-10">
+      {/* Responsive Bottom Navigation Bar */}
+      <div className="fixed bottom-0 w-full bg-gray-900 text-white py-3 px-4 rounded-t-lg shadow-md flex justify-around md:static md:justify-center md:gap-10">
         {navItems.map((item, index) => (
           <NavItem
             key={index}
@@ -46,12 +46,12 @@ const Navigation = () => {
         ))}
       </div>
 
-      {/* Search Popup Centered and Responsive */}
+      {/* Search Popup (Mobile & Desktop Responsive) */}
       {isSearchOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
           <div
             ref={searchRef}
-            className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg text-white relative"
+            className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-xs md:max-w-md lg:max-w-lg text-white relative"
           >
             <button
               onClick={() => setIsSearchOpen(false)}
