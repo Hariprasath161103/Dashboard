@@ -32,9 +32,9 @@ const Navigation = () => {
   }, [isSearchOpen]);
 
   return (
-    <div className="p-2 relative">
-      {/* Row-wise Navigation Bar */}
-      <div className="flex justify-between items-center bg-gray-900 text-white py-3 px-6 rounded-lg shadow-md">
+    <div className="p-4 relative">
+      {/* Column-wise Navigation Bar */}
+      <div className="flex flex-col items-center bg-gray-900 text-white py-6 px-4 rounded-lg shadow-md w-full max-w-xs mx-auto gap-4">
         {navItems.map((item, index) => (
           <NavItem
             key={index}
