@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Settings, HelpCircle, Sun } from 'lucide-react';
 import NavItem from './NavItem';
+import SettingsModal from './SettingsModal';
 
 const bottomNavItems = [
   { icon: Settings, label: "Settings", action: "openSettings" },
@@ -8,8 +9,11 @@ const bottomNavItems = [
   { icon: Sun, label: "Toggle theme", action: "toggleTheme" }
 ];
 
-const BottomNavigation = ({ onOpenSettings }) => {
+const BottomNavigation = () => {
   const [theme, setTheme] = useState('light');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  console.log('Settings modal state:', isSettingsOpen);  // Debug log
 
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -17,15 +21,18 @@ const BottomNavigation = ({ onOpenSettings }) => {
   };
 
   const handleAction = (action) => {
+    console.log('Action triggered:', action);  // Debug log
+
     if (action === 'toggleTheme') {
       toggleTheme();
     } else if (action === 'openSettings') {
-      onOpenSettings(); // Trigger modal from parent
+      console.log('Opening settings modal');  // Debug log
+      setIsSettingsOpen(true);
     }
   };
 
   return (
-    <div className="fixed bottom-0 w-full bg-gray-900 text-white p-2 border-t border-gray-800 flex justify-center gap-6">
+    <div className="absolute bottom-0 w-64 p-2 border-t border-gray-800">
       {bottomNavItems.map((item, index) => (
         <NavItem
           key={index}
@@ -34,6 +41,7 @@ const BottomNavigation = ({ onOpenSettings }) => {
           onClick={() => item.action && handleAction(item.action)}
         />
       ))}
+      {isSettingsOpen && <SettingsModal onClose={() => setIsSettingsOpen(false)} />}
     </div>
   );
 };
