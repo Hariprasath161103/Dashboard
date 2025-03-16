@@ -11,11 +11,11 @@ const SettingsModal = ({ onClose }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 p-4">
-            <div className="bg-gray-800 text-white w-full max-w-3xl h-[90vh] sm:h-[400px] rounded-lg shadow-xl flex flex-col sm:flex-row overflow-hidden">
+            <div className="bg-gray-800 text-white w-full max-w-3xl h-screen sm:h-[400px] rounded-lg shadow-xl flex flex-col sm:flex-row overflow-hidden">
                 {/* Sidebar */}
                 <div className="w-full sm:w-1/3 border-b sm:border-b-0 sm:border-r border-gray-700 p-4">
                     <h2 className="text-lg font-semibold mb-4">Settings</h2>
-                    <div className="h-[250px] sm:h-[320px] overflow-auto">
+                    <div className="h-[calc(100vh-100px)] sm:h-[320px] overflow-auto">
                         <ul className="space-y-2">
                             {categories.map((category) => (
                                 <li
